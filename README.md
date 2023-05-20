@@ -1,5 +1,6 @@
-### to run the app:
+### To run the app:
 
+```
 git clone https://github.com/OmerBilgin21/react-flask-task-app.git
 
 pip install Flask pymongo uuid
@@ -13,8 +14,9 @@ cd ../frontend
 npm i
 
 npm run dev
+```
 
-### to run the database
+### To run the database
 
 If you have mongodb installed everything should be fine.
 
@@ -38,7 +40,6 @@ sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg \
 --dearmor
 
 
-
 echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
 
 sudo apt-get update
@@ -56,8 +57,6 @@ echo "mongodb-mongosh hold" | sudo dpkg --set-selections
 echo "mongodb-org-mongos hold" | sudo dpkg --set-selections
 
 echo "mongodb-org-tools hold" | sudo dpkg --set-selections
-
-
 
 sudo systemctl start mongod
 
