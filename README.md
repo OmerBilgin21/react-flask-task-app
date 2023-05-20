@@ -8,7 +8,11 @@ pip install Flask pymongo uuid
 cd backend
 
 flask run --debug --host=0.0.0.0
+```
 
+Open another terminal and go to the folder where you cloned the project. After doing so, run the following:
+
+```
 cd ../frontend
 
 npm i
