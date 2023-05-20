@@ -24,7 +24,7 @@ If your mongodb runs on a different port than default, please make adjustments a
 
 ##### If you don't have mongodb installed
 
-Fron here you can follow the instructions to install it.
+From here you can follow the instructions to install it.
 
 https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
 
