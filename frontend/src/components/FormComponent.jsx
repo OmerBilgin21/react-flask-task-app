@@ -15,13 +15,13 @@ function FormComponent({ data }) {
     pitch: "Select the pitch:",
   };
   const eventObj = {};
+
+  // To have defaultValues
   const [selectedOptions, setSelectedOptions] = useState({
     event: data["event"][0],
     person: data["person"][0],
     pitch: data["pitch"][0],
   });
-
-  console.log("selectedOptions", selectedOptions);
 
   return (
     <>

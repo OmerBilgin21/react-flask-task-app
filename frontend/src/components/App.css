@@ -5,6 +5,19 @@
   text-align: center;
 }
 
-span {
+.app-icon {
   color: blue
+}
+
+.credentials {
+  text-decoration: none;
+  color: #eee;
+  max-width: 3rem;
+
+}
+
+.credentials:hover {
+  color: white;
+  cursor: pointer;
+
 }

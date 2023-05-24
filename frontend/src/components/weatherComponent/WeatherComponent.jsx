@@ -61,18 +61,17 @@ const WeatherComponent = ({ setSelectedOptions, selectedOptions }) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTime]);
+  }, [selectedTime, weather]);
 
   useEffect(() => {
-    // because we fetch that time options the defaultValue is hard to maintain
-    // because of react strict mode
-    // at development useEffect with empty dependency: [] renders twice
-    // and that messes up the defaultValue property of form.select
-    // the default value kind of unnecessary but nice to have I think
-    if (!loading) setSelectedTime("2023-05-23 at 00:00");
-  }, [loading]);
+    if (!loading) setSelectedTime(weather.hourly.time[0]);
+  }, [loading, weather]);
 
-  if (!weather) return <p>Loading!</p>;
+  console.log("weather", weather);
+
+  const humanReadableTime = (time) => time.split("T").join(" at ");
+
+  if (!weather) return <p>Loading...</p>;
 
   return (
     <>
@@ -90,7 +89,7 @@ const WeatherComponent = ({ setSelectedOptions, selectedOptions }) => {
             >
               {weather.hourly.time.map((element) => (
                 <option defaultValue="Please select" key={element}>
-                  {element.split("T").join(" at ")}
+                  {humanReadableTime(element)}
                 </option>
               ))}
             </Form.Select>

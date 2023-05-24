@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import propTypes from "prop-types";
+import reloadIcon from "../../assets/reload.svg";
+import "./Todos.css";
 
 const editEvent = (todos, index, editEntity) => {
   let editData = {};
@@ -27,14 +29,12 @@ const editEvent = (todos, index, editEntity) => {
       console.log("edit error", error);
     });
 };
+
 const deleteEvent = (todos, index) => {
-  //   const theDeletedOne = Object.keys(todos).map((e) => ({todos[e][index]}));
   const theDeletedOne = {};
   Object.keys(todos).forEach((e) => {
     theDeletedOne[e] = todos[e][index];
   });
-  //   editData = { ...editData, ...editEntity };
-  console.log("theDeletedOne", theDeletedOne);
 
   axios({
     method: "post",
@@ -58,6 +58,7 @@ const Todos = ({ data }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [todos, setTodos] = useState();
   const [editEntity, setEditEntity] = useState();
+  const [reload, setReload] = useState(0);
   const eventObj = {};
 
   useEffect(() => {
@@ -71,18 +72,13 @@ const Todos = ({ data }) => {
         setIsLoading(true);
         console.log(e);
       });
-  }, []);
+  }, [reload]);
 
   if (isLoading) return <p>Loading!</p>;
 
   const labels = [...Object.keys(todos)];
   labels.splice(labels.indexOf("id"), 1);
-  const loopp = [...labels];
   labels.push("edit", "delete");
-  console.log("todos", todos);
-  console.log("labels", labels);
-  console.log("editEntity", editEntity);
-  console.log("loopp", loopp);
 
   return (
     <div>
@@ -92,7 +88,17 @@ const Todos = ({ data }) => {
           <Table striped bordered hover className="bg-light text-dark">
             <thead>
               <tr>
-                <th>#</th>
+                <th>
+                  <img
+                    onClick={() =>
+                      setReload((oldVal) => {
+                        return oldVal + 1;
+                      })
+                    }
+                    className="reload-icon"
+                    src={reloadIcon}
+                  />
+                </th>
                 {labels.map((e) => (
                   <th key={e}>{e}</th>
                 ))}
