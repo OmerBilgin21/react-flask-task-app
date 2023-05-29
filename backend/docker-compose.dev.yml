@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+ web:
+  build:
+   context: .
+  ports:
+  - 8080:5000
+  volumes:
+  - ./:/api
+
+ my-docker-mongo:
+  image: mongo:latest
+  ports:
+  - 27017:27017
+  volumes:
+  - todo-app-db:/data/db
+
+volumes:
+  todo-app-db:
